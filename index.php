@@ -36,8 +36,16 @@ $app->get('/url/:type/:country', function ($type, $country) use ($app) {
     foreach ($requestHistory as $key => $ll) { 
         if (strpos($ll,'.json') == false) {
             unset($requestHistory[$key]);
+        }else{
+            $ll = substr($ll, 0, -5); //remove json filename
+            $date = date_create_from_format('Y-m-d H-i-s', $ll);
+            $requestHistory[$key] = $date->getTimestamp();
         }
     }
+    sort($requestHistory);
+    $requestHistoryLength = count($requestHistory);
+    $lastFile = $requestHistoryLength - 2;
+
     //print_r($requestHistory);
 
     $mostRecent= 0;
@@ -45,6 +53,12 @@ $app->get('/url/:type/:country', function ($type, $country) use ($app) {
 
     //sort($requestHistory);
     print_r($requestHistory);
+    echo $requestHistory[$lastFile] . "<br />";
+
+
+    $latestFile = gmdate("Y-m-d H-i-s", $requestHistory[$lastFile]);
+    $latestFilename = $folder . $latestFile . ".json";
+    echo $latestFilename;
 
     /*
     foreach($requestHistory as $date){
