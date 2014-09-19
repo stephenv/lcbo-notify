@@ -70,6 +70,25 @@ function requestArray($type, $country) {
             if(!isset($itemDescriptionArray[5])){
                 $itemDescriptionArray[5] = "NOT DISCONTINUED";
             }
+            $itemDescriptionArrayLength = count($itemDescriptionArray);
+            echo "<br />" . $itemDescriptionArrayLength . "<br >";
+
+            /*$maxArrayLength = 6;
+            if ($itemDescriptionArrayLength > $maxArrayLength){
+            	$iArray = 6;
+            	while($itemDescriptionArrayLength > $maxArrayLength){
+            		if(array_key_exists($iArray, $itemDescriptionArray)){
+            			$itemDescriptionArray[5] = $itemDescriptionArray[5] + $itemDescriptionArray[$iArray];
+            			unset($itemDescriptionArray[$iArray]);
+            		}
+            		$iArray++;
+            	}
+            }*/
+
+           	print_r($itemDescriptionArray);
+            /*
+            
+
             array_push($itemDescriptionArray, $itemName);
             //$item['description'] = $itemDescriptionArray;
 
@@ -82,14 +101,17 @@ function requestArray($type, $country) {
                     "availability",
                     "name"
                 );
+             */
                 /*foreach($item['description'] as $key=>$value) {
                     $itemKeys[$key] = $value[];
                 }*/
                 
                 //$item['description'] = array_combine($itemKeys, array_values($item['description']));
-                $inventory[] = array_combine($itemKeys, $itemDescriptionArray);
+            //$inventory[] = array_combine($itemKeys, $itemDescriptionArray);
+                //print_r($inventory);
                 
                 //echo $element->plaintext . '<br>';
+
         }
         //if(isset($item['description'])){
         //    $inventory[] = $item;
